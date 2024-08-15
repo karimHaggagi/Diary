@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "344526322230",
+    "project_id": "quran-6e31e",
+    "storage_bucket": "quran-6e31e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:344526322230:android:9de087ebfd20aab7bb7697",
+        "android_client_info": {
+          "package_name": "com.example.diaryapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "344526322230-508973e5c55uj6upcnj2rdhbutr6j4ng.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDfp5Rbdt7QDXma4EvuJxPjFuGV9ZMG4M4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "344526322230-508973e5c55uj6upcnj2rdhbutr6j4ng.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
