@@ -9,6 +9,7 @@ buildscript {
         // Right now this classpath is needed for compatibility of the
         // MongoDB Realm with Kotlin 2.0
         classpath(libs.realm.kotlin.gradle.plugin)
+        classpath(libs.jacoco)
     }
 }
 plugins {

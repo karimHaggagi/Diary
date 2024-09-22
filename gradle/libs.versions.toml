@@ -26,6 +26,8 @@ agp = "8.4.1"
 kotlin = "2.0.0"
 googleGms = "4.4.2"
 ksp = "2.0.0-1.0.21"
+jacocoVersion = "0.8.5"
+
 
 
 [libraries]
@@ -62,6 +64,7 @@ kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-c
 library-sync = { module = "io.realm.kotlin:library-sync", version.ref = "librarySync" }
 messagebarcompose = { module = "com.github.stevdza-san:MessageBarCompose", version.ref = "messagebarcompose" }
 onetapcompose = { module = "com.github.stevdza-san:OneTapCompose", version.ref = "onetapcompose" }
+jacoco = { group = "org.jacoco", name = "org.jacoco.core", version.ref = "jacocoVersion" }
 
 
 [plugins]
@@ -72,3 +75,4 @@ dagger-hilt = { id = "com.google.dagger.hilt.android", version.ref = "hiltAndroi
 google-services = { id = "com.google.gms.google-services", version.ref = "googleGms"}
 google-ksp = { id = "com.google.devtools.ksp", version.ref = "ksp"}
 jetbrains-kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin"}
+
