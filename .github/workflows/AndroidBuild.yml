@@ -1,0 +1,28 @@
+name: AndroidBuild
+on:
+  pull_request:
+    branches: [ master ]
+
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4.1.7
+
+      - name: Setup Java JDK
+        uses: actions/setup-java@v4.3.0
+
+      - name: Build with Gradle
+        uses: gradle/actions@v4.1.0
+
+      - name: Upload a Build Artifact
+        uses: actions/upload-artifact@v3.2.1-node20
+        with:
+          name: DiaryApp.apk
+          path: app/build/outputs/apk/app-debug.apk
+
