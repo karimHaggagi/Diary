@@ -1,0 +1,52 @@
+name: RunAndroidTests
+
+on:
+  pull_request:
+    branches: [ '*' ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4.1.7
+
+      - name: Set up JDK
+        uses: actions/setup-java@v4.3.0
+        with:
+          java-version: '17.0'
+          distribution: 'adopt'
+
+      - name: Cache Gradle dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.gradle/caches
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
+
+      - name: Build the project
+        run: ./gradlew build
+
+      - name: Run all tests
+        run: ./gradlew test
+
+      - name: Run UI tests (optional)
+        run: ./gradlew connectedAndroidTest
+        env:
+          ANDROID_EMULATOR_USE_SYSTEM_IMAGE: true
+          EMULATOR_API_LEVEL: 30  # Adjust this based on your target API level
+
+      - name: Upload test results
+        uses: actions/upload-artifact@v3.2.1-node20
+        with:
+          name: test-results
+          path: app/build/test-results
+
+      - name: Upload coverage reports (optional)
+        uses: actions/upload-artifact@v3.2.1-node20
+        with:
+          name: coverage-reports
+          path: app/build/reports
+
