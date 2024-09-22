@@ -15,9 +15,15 @@ import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
-import com.example.diaryapp.presentation.screens.auth.AuthenticationScreen
-import com.example.diaryapp.presentation.screens.home.HomeScreen
-import com.example.diaryapp.presentation.screens.write.WriteScreen
+import com.example.write.WriteScreen
+import com.example.navigation.authenticationRoute
+import com.example.navigation.homeRoute
+import com.example.navigation.navigateToAuthenticationRoute
+import com.example.navigation.navigateToHomeRoute
+import com.example.util.Screens
+import com.example.util.WRITE_SCREEN_ARGUMENT_DIARY_ID
+import com.example.write.navigation.navigateToWriteRoute
+import com.example.write.navigation.writeRoute
 
 @Composable
 fun SetupNavigationGraph(startDestination: String, navHostController: NavHostController) {
@@ -47,56 +53,4 @@ fun SetupNavigationGraph(startDestination: String, navHostController: NavHostCon
         })
     }
 
-}
-
-
-fun NavController.navigateToAuthenticationRoute(navOptions: NavOptions? = null) =
-    navigate(Screens.Authentication.route, navOptions)
-
-fun NavGraphBuilder.authenticationRoute(navigateToHomeScreen: () -> Unit) {
-
-    composable(route = Screens.Authentication.route) {
-        AuthenticationScreen(
-            navigateToHomeScreen = navigateToHomeScreen
-        )
-    }
-}
-
-
-fun NavController.navigateToHomeRoute(navOptions: NavOptions? = null) =
-    navigate(Screens.Home.route, navOptions)
-
-fun NavGraphBuilder.homeRoute(
-    navigateToAuthScreen: () -> Unit,
-    navigateWriteScreen: (String?) -> Unit
-) {
-
-    composable(route = Screens.Home.route) {
-        HomeScreen(
-            navigateToAuthScreen = navigateToAuthScreen,
-            navigateToWriteScreen = navigateWriteScreen
-        )
-    }
-}
-
-
-fun NavController.navigateToWriteRoute(diaryId: String?, navOptions: NavOptions? = null) =
-    navigate(Screens.Write.passDiaryId(diaryId), navOptions)
-
-fun NavGraphBuilder.writeRoute(onBackButtonPressed: () -> Unit) {
-
-    composable(
-        route = Screens.Write.route,
-        arguments = listOf(
-            navArgument(name = WRITE_SCREEN_ARGUMENT_DIARY_ID,
-                builder = {
-                    type = NavType.StringType
-                    nullable = true
-                    defaultValue = null
-                })
-        )
-    ) {
-
-        WriteScreen(onBackButtonPressed = onBackButtonPressed)
-    }
 }
