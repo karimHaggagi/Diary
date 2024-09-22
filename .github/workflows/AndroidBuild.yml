@@ -21,7 +21,7 @@ jobs:
           distribution: 'adopt'
 
       - name: Build with Gradle
-        uses: gradle/actions@v4.1.0
+        uses: ./gradlew build
 
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v3.2.1-node20
