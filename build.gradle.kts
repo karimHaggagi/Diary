@@ -19,5 +19,7 @@ plugins {
     alias(libs.plugins.google.services) apply false
     alias(libs.plugins.google.ksp) apply false
     alias(libs.plugins.jetbrains.kotlin.compose) apply false
+    //alias(libs.plugins.compose.compiler) apply false
+
 //    id 'io.realm.kotlin' version '1.16.0' apply false
 }

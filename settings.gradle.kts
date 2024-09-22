@@ -1,5 +1,23 @@
 import java.net.URI
 
+include(":feature:write")
+
+
+include(":feature:home")
+
+
+include(":feature:auth")
+
+
+include(":data:mongo")
+
+
+include(":core:util")
+
+
+include(":core:ui")
+
+
 pluginManagement {
     repositories {
         google {
@@ -22,7 +40,6 @@ dependencyResolutionManagement {
         mavenCentral()
         maven { url = URI.create("https://jitpack.io") }
         maven { url = uri("https://oss.sonatype.org/content/repositories/snapshots") }
-
 
     }
 }
