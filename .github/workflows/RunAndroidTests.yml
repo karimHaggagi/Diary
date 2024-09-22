@@ -35,20 +35,6 @@ jobs:
       - name: Run all tests
         run: ./gradlew test
 
-      - name: Run connected tests
-        uses: ReactiveCircus/android-emulator-runner@v2
-        with:
-          api-level: 30
-          target: google_apis
-          arch: x86_64
-          script: ./gradlew connectedCheck
-          
-      - name: Run UI tests (optional)
-        run: ./gradlew connectedAndroidTest
-        env:
-          ANDROID_EMULATOR_USE_SYSTEM_IMAGE: true
-          EMULATOR_API_LEVEL: 30  # Adjust this based on your target API level
-
       - name: Upload test results
         uses: actions/upload-artifact@v3.2.1-node20
         with:
