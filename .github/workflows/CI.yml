@@ -37,10 +37,10 @@ jobs:
 
     steps:
       - name: Checkout the code
-        run: actions/checkout@v4.1.7
+        uses: actions/checkout@v4.1.7
 
       - name: Run Test
-        uses: ./gradlew test
+        run: ./gradlew test
 
       - name: Upload test artifact
         uses: actions/upload-artifact@v4
