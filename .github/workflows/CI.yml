@@ -64,7 +64,7 @@ jobs:
         uses: actions/checkout@v4.1.7
 
       - name: Run espresso Test
-        run: reactiveCircus/android-emulator-runner@v2
+        uses: reactiveCircus/android-emulator-runner@v2
         with:
           api-level: 29
           script: ./gradlew connectedCheck
