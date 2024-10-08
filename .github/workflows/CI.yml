@@ -54,24 +54,22 @@ jobs:
           name: unit_test_report
           path: app/build/reports/tests/testDebugUnitTest
 
-
-  insternation-test:
+  code-analysis:
     needs: [unit-test]
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout the code
         uses: actions/checkout@v4.1.7
 
-      - name: Run espresso Test
-        uses: reactiveCircus/android-emulator-runner@v2
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
         with:
-          api-level: 29
-          script: ./gradlew connectedCheck
+          distribution: 'temurin'
+          java-version: '17'
 
-      - name: Upload test report
-        uses: actions/upload-artifact@v4
-        with:
-          name: instrumental_test_report
-          path: app/build/reports/androidTests/connected/
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@v3.0.0
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
